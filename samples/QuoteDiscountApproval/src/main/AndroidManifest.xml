@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.forcequotewatch.app">
+    package="com.force.quotediscountapproval.app">
 
     <supports-screens
         android:largeScreens="true"
@@ -10,15 +10,15 @@
         android:anyDensity="true"
         />
 
-    <permission android:name="com.example.forcequotewatch.app.permission.C2D_MESSAGE" android:protectionLevel="signature" />
-    <uses-permission android:name="com.example.forcequotewatch.app.permission.C2D_MESSAGE" />
+    <permission android:name="com.force.quotediscountapproval.app.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+    <uses-permission android:name="com.force.quotediscountapproval.app.permission.C2D_MESSAGE" />
 
     <application
         android:icon="@drawable/s1_icon"
         android:label="@string/app_name"
-        android:name="com.example.forcequotewatch.app.ForceQuoteWatchApp">
+        android:name=".QuoteDiscountApprovalApp">
         <activity
-            android:name="com.example.forcequotewatch.app.MainActivity"
+            android:name=".QuoteDiscountApprovalSetup"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.DeviceDefault">
             <intent-filter>
@@ -26,7 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name="com.example.forcequotewatch.app.QuoteActions" android:exported="true" />
+        <receiver android:name=".QuoteDiscountApprovalActions" android:exported="true" />
         <activity tools:merge="remove" android:name="org.apache.cordova.StandAlone" />
     </application>
 

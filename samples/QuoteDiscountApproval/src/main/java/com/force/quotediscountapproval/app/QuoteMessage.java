@@ -1,4 +1,4 @@
-package com.example.forcequotewatch.app;
+package com.force.quotediscountapproval.app;
 
 import android.os.Bundle;
 

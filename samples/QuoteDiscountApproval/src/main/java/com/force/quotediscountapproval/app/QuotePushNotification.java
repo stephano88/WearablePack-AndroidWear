@@ -1,4 +1,4 @@
-package com.example.forcequotewatch.app;
+package com.force.quotediscountapproval.app;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -39,7 +39,7 @@ public class QuotePushNotification implements PushNotificationInterface {
                 try {
                     HttpClient httpClient = new DefaultHttpClient();
                     HttpGet httpGet = new HttpGet(urls[0]);
-                    httpGet.setHeader("Authorization", "Bearer " + MainActivity.client.getAuthToken());
+                    httpGet.setHeader("Authorization", "Bearer " + QuoteDiscountApprovalSetup.client.getAuthToken());
                     HttpResponse response = httpClient.execute(httpGet);
                     return BitmapFactory.decodeStream(response.getEntity().getContent());
                 } catch (Exception e) {
@@ -48,19 +48,19 @@ public class QuotePushNotification implements PushNotificationInterface {
             }
 
             protected void onPostExecute(Bitmap maybeChatterProfilePic) {
-                Intent openIntent = new Intent(QuoteActions.OPEN);
-                openIntent.setClass(context, QuoteActions.class);
-                openIntent.putExtra(QuoteActions.BUNDLE, quoteMessage.toBundle());
+                Intent openIntent = new Intent(QuoteDiscountApprovalActions.OPEN);
+                openIntent.setClass(context, QuoteDiscountApprovalActions.class);
+                openIntent.putExtra(QuoteDiscountApprovalActions.BUNDLE, quoteMessage.toBundle());
                 PendingIntent openPendingIntent = PendingIntent.getBroadcast(context, 0, openIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-                Intent approveIntent = new Intent(QuoteActions.APPROVE);
-                approveIntent.setClass(context, QuoteActions.class);
-                approveIntent.putExtra(QuoteActions.BUNDLE, quoteMessage.toBundle());
+                Intent approveIntent = new Intent(QuoteDiscountApprovalActions.APPROVE);
+                approveIntent.setClass(context, QuoteDiscountApprovalActions.class);
+                approveIntent.putExtra(QuoteDiscountApprovalActions.BUNDLE, quoteMessage.toBundle());
                 PendingIntent approvePendingIntent = PendingIntent.getBroadcast(context, 0, approveIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-                Intent rejectIntent = new Intent(QuoteActions.REJECT);
-                rejectIntent.setClass(context, QuoteActions.class);
-                rejectIntent.putExtra(QuoteActions.BUNDLE, quoteMessage.toBundle());
+                Intent rejectIntent = new Intent(QuoteDiscountApprovalActions.REJECT);
+                rejectIntent.setClass(context, QuoteDiscountApprovalActions.class);
+                rejectIntent.putExtra(QuoteDiscountApprovalActions.BUNDLE, quoteMessage.toBundle());
                 PendingIntent rejectPendingIntent = PendingIntent.getBroadcast(context, 0, rejectIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
                 // Main notification
@@ -89,7 +89,7 @@ public class QuotePushNotification implements PushNotificationInterface {
                 // Reject Card
                 String[] rejectChoices = {"Too high", "Lets wait"};
 
-                RemoteInput remoteInput = new RemoteInput.Builder(QuoteActions.MESSAGE)
+                RemoteInput remoteInput = new RemoteInput.Builder(QuoteDiscountApprovalActions.MESSAGE)
                         .setAllowFreeFormInput(true)
                         .setChoices(rejectChoices)
                         .setLabel("Reject")

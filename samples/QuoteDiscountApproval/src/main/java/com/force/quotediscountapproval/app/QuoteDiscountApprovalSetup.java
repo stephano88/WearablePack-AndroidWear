@@ -1,4 +1,4 @@
-package com.example.forcequotewatch.app;
+package com.force.quotediscountapproval.app;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -16,9 +16,9 @@ import org.json.JSONArray;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
-public class MainActivity extends SalesforceActivity {
+public class QuoteDiscountApprovalSetup extends SalesforceActivity {
 
-    private static final String TAG = MainActivity.class.getName();
+    private static final String TAG = QuoteDiscountApprovalSetup.class.getName();
 
     public static RestClient client;
     private ArrayAdapter<String> listAdapter;
@@ -47,7 +47,7 @@ public class MainActivity extends SalesforceActivity {
     // todo: cleanup this ui
     public void onResume(RestClient client) {
         // Keeping reference to rest client
-        MainActivity.client = client;
+        QuoteDiscountApprovalSetup.client = client;
 
         // Show everything
         findViewById(R.id.root).setVisibility(View.VISIBLE);
@@ -95,8 +95,8 @@ public class MainActivity extends SalesforceActivity {
 
             @Override
             public void onError(Exception exception) {
-                Toast.makeText(MainActivity.this,
-                        MainActivity.this.getString(SalesforceSDKManager.getInstance().getSalesforceR().stringGenericError(), exception.toString()),
+                Toast.makeText(QuoteDiscountApprovalSetup.this,
+                        QuoteDiscountApprovalSetup.this.getString(SalesforceSDKManager.getInstance().getSalesforceR().stringGenericError(), exception.toString()),
                         Toast.LENGTH_LONG).show();
             }
         });

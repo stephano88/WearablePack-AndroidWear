@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <resources>
-    <string name="remoteAccessConsumerKey">YOUR_CONNECTED_APP_OAUTH_CONSUMER_KEY</string>
-    <string name="androidPushNotificationClientId">YOUR_GCM_PROJECT_NUMBER</string>
     <string name="oauthRedirectURI">sfdc://success</string>
     <string-array name="oauthScopes">
         <item>api</item>

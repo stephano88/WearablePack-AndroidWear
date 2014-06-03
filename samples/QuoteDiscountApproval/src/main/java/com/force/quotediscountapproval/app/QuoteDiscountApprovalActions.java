@@ -1,4 +1,4 @@
-package com.example.forcequotewatch.app;
+package com.force.quotediscountapproval.app;
 
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
@@ -16,13 +16,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class QuoteActions extends BroadcastReceiver {
+public class QuoteDiscountApprovalActions extends BroadcastReceiver {
 
     public static final String OPEN = "open";
     public static final String APPROVE = "approve";
     public static final String REJECT = "reject";
 
-    private static final String TAG = QuoteActions.class.getName();
+    private static final String TAG = QuoteDiscountApprovalActions.class.getName();
 
     public static final String BUNDLE = "bundle";
     public static final String MESSAGE = "message";
@@ -85,7 +85,7 @@ public class QuoteActions extends BroadcastReceiver {
 
             final RestRequest restRequest = new RestRequest(RestRequest.RestMethod.POST, url, entity);
 
-            MainActivity.client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
+            QuoteDiscountApprovalSetup.client.sendAsync(restRequest, new RestClient.AsyncRequestCallback() {
                 @Override
                 public void onSuccess(RestRequest request, RestResponse result) {
                     Log.d(TAG, result.toString());

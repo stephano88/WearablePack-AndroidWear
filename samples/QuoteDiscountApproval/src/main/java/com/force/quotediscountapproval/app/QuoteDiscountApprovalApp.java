@@ -24,7 +24,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package com.example.forcequotewatch.app;
+package com.force.quotediscountapproval.app;
 
 import android.app.Application;
 
@@ -34,26 +34,16 @@ import com.salesforce.androidsdk.security.Encryptor;
 /**
  * Application class for our application.
  */
-public class ForceQuoteWatchApp extends Application {
+public class QuoteDiscountApprovalApp extends Application {
 
-    private static final String TAG = ForceQuoteWatchApp.class.getName();
+    private static final String TAG = QuoteDiscountApprovalApp.class.getName();
 
     @Override
     public void onCreate() {
         super.onCreate();
-        SalesforceSDKManager.initNative(getApplicationContext(), new KeyImpl(), MainActivity.class);
-
+        SalesforceSDKManager.initNative(getApplicationContext(), new KeyImpl(), QuoteDiscountApprovalSetup.class);
         SalesforceSDKManager.getInstance().setPushNotificationReceiver(new QuotePushNotification(this));
     }
-
-    /*
-    public static void getResultClient(ClientManager.RestClientCallback restClientCallback) {
-        ClientManager cm = new ClientManager(SalesforceSDKManager.getInstance().getAppContext(),
-                SalesforceSDKManager.getInstance().getAccountType(),
-                SalesforceSDKManager.getInstance().getLoginOptions(), true);
-        cm.getRestClient(null, restClientCallback);
-    }
-    */
 
     public class KeyImpl implements SalesforceSDKManager.KeyInterface {
         @Override
