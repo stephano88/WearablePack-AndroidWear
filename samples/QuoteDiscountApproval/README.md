@@ -42,7 +42,11 @@ Now lets get started setting up everything needed to run this sample application
         
     Note: Make sure you put the GCM Project Number in double quotes, but not the others.
 
-4. From the command line run the following in the `QuoteDiscountApproval` directory:
+4. In the `QuoteDiscountApproval` directory create a new file named `local.properties` containing:
+
+        sdk.dir=YOUR_FULL_PATH_TO_THE_ANDROID_SDK
+
+5. From the command line run the following in the `QuoteDiscountApproval` directory:
 
         For Mac & Linux:
         ./gradlew forceMetadataDeploy
@@ -52,8 +56,8 @@ Now lets get started setting up everything needed to run this sample application
     
     This deploys the Salesforce code from `src/main/salesforce` into your organization
 
-5. Setup OAUTH
-    1. Select *Setup*
+6. Setup OAUTH
+    1. In Salesforce, select *Setup*
     2. Select *Create*
     3. Select *Apps*
     4. In *Connected Apps* select the *QuoteDiscountApproval* app
@@ -62,14 +66,14 @@ Now lets get started setting up everything needed to run this sample application
     
             remoteAccessConsumerKey=YOUR_OAUTH_CONSUMER_KEY
 
-6. Enable Mobile Push
+7. Enable Mobile Push
     1. In the *QuoteDiscountApproval* screen select *Edit*
     2. Select the *Push Messaging Enabled* checkbox
     3. From the *Supported Push Platform* drop-down select *Android GCM*
     4. Enter your GCM API key in the *Server Key* field
     5. Select *Save*
 
-7. Create a manager for your user
+8. Create a manager for your user (if one doesn't exist already)
     1. Select *Setup*
     2. Select *Manage Users*
     3. Select *Users*
