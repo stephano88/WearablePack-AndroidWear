@@ -12,6 +12,7 @@ import android.preview.support.v4.app.NotificationManagerCompat;
 import android.preview.support.wearable.notifications.RemoteInput;
 import android.preview.support.wearable.notifications.WearableNotifications;
 import android.support.v4.app.NotificationCompat;
+import java.util.Formatter;
 import com.salesforce.androidsdk.push.PushNotificationInterface;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -77,7 +78,7 @@ public class QuotePushNotification implements PushNotificationInterface {
                 // Detail Card
                 NotificationCompat.BigTextStyle detailCard = new NotificationCompat.BigTextStyle();
                 detailCard.setBigContentTitle(quoteMessage.oppName)
-                        .bigText("Discount: " + quoteMessage.discount + "%           Total Price: " + quoteMessage.amount.toString());
+                        .bigText("Discount: " + quoteMessage.discount + "%           Total Price: $" + new Formatter().format("%,d", quoteMessage.amount));
 
                 Notification detailNotification = new NotificationCompat.Builder(context)
                         .setStyle(detailCard)
