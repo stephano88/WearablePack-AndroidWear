@@ -13,6 +13,7 @@ As you can see, Android Wear apps are companions to phone apps as they receive n
 For most business, Salesforce contains the information and events that employees, partners, and customers interact with all day long.  So it is easy to link together events on Salesforce with notifications on Android Wear devices.
 
 The basic architecture looks like this:
+
 1. A trigger in Salesforce handles an event that should trigger an Android Wear notification
 2. A message is created and sent to the Google Cloud Messaging (GCM) service using the new Mobile Push feature of Salesforce (Available in the Summer '14 release)
 3. GCM delivers the notification to an Android phone
