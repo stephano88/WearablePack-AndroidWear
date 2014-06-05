@@ -2,4 +2,9 @@
 <resources>
     <string name="app_name">Quote Discount Approval</string>
     <string name="api_version">v30.0</string>
+    <string name="send_test_notification">Send Test Notification</string>
+    <string name="logout">Logout</string>
+    <string name="logged_in">Connected to Salesforce.\n\nNow receiving Quote Discount Approval notifications.</string>
+    <string name="logging_in">Logging into Salesforce...</string>
+    <string name="login_error">"Error logging into Salesforce"</string>
 </resources>

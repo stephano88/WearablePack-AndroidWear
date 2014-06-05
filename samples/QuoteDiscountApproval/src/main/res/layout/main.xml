@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="fill_parent"
-    android:layout_height="fill_parent" android:background="#454545"
-    android:id="@+id/root">
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:paddingTop="20dp">
 
-    <RelativeLayout
-        android:layout_width="fill_parent" android:layout_height="48dp"
-        android:padding="3dp" android:background="#aaaaaa">
+    <TextView
+        android:id="@+id/connect_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10pt"
+        android:text="@string/logging_in"
+        android:paddingBottom="10dp"/>
 
-        <TextView android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:textColor="#000000"
-            android:layout_marginLeft="3dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onSendTestNotificationClick"
+        android:text="@string/send_test_notification" />
 
-        <Button android:id="@+id/logout_button" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_alignParentRight="true"
-            android:layout_centerVertical="true" android:onClick="onSendNotificationClick"
-            android:text="Send Notification" />
-
-    </RelativeLayout>
-
-    <ListView android:id="@+id/deal_list" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onLogoutClick"
+        android:text="@string/logout" />
 
 </LinearLayout>
