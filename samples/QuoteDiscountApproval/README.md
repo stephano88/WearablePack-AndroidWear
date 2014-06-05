@@ -7,6 +7,7 @@ To learn more about the architecture and code visit: TODO
 To get this sample application running you will need:
 * An Android 4.3 or newer phone
 * A Salesforce organization with Mobile Push enabled
+
     > Mobile Push will be generally available with the Summer '14 release.  If you are an existing Salesforce customer you can contact support to have Mobile Push enabled.
 
 Now lets get started setting up everything needed to run this sample application.
