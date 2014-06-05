@@ -13,13 +13,16 @@ As you can see, Android Wear apps are companions to phone apps as they receive n
 For most business, Salesforce contains the information and events that employees, partners, and customers interact with all day long.  So it is easy to link together events on Salesforce with notifications on Android Wear devices.
 
 The basic architecture looks like this:
-
 1. A trigger in Salesforce handles an event that should trigger an Android Wear notification
 2. A message is created and sent to the Google Cloud Messaging (GCM) service using the new Mobile Push feature of Salesforce (Available in the Summer '14 release)
 3. GCM delivers the notification to an Android phone
 4. The Android phone delivers the notification to the wearable
 
-The `Quote Discount Approval` sample app contains the source for a Salesforce and Android Wear app  that uses this architecture for a common use case.  Often sales quotes with a discount above a certain number need to be approved by a sales manager.  With this sample app those approval requests can be reviewed and approved or rejected from an Android Wear device, such as a watch.  Check out the [full instructions](https://github.com/developerforce/WearablePack-AndroidWear/blob/master/samples/QuoteDiscountApproval/README.md) for getting the `Quote Discount Approval` app up and running in your environment.
+The `Quote Discount Approval` sample app contains the source for a Salesforce and Android Wear app that uses this architecture for a common use case.  Often sales quotes with a discount above a certain number need to be approved by a sales manager.  With this sample app those approval requests can be reviewed and approved or rejected from an Android Wear device, such as a watch.  Here is what the flow looks like in this sample app:
+
+![Quote Discount Approval Flow](quote-discount-approval.jpg)
+
+Check out the [full instructions](https://github.com/developerforce/WearablePack-AndroidWear/blob/master/samples/QuoteDiscountApproval/README.md) for getting the `Quote Discount Approval` app up and running in your environment.
 
 In the `Quote Discount Approval` sample app there is a Salesforce approval process that requires manager approval of `Quotes` which have discounts at or above 20%.  The metadata for that approval process is available in the [src/main/salesforce/unpackaged/approvalProcesses/Quote.QuoteDiscountApproval.approvalProcess](https://github.com/developerforce/WearablePack-AndroidWear/blob/master/samples/QuoteDiscountApproval/src/main/salesforce/unpackaged/approvalProcesses/Quote.QuoteDiscountApproval.approvalProcess) file.
 
