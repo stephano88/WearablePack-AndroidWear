@@ -2,7 +2,7 @@
 
 This sample Android Wear application pushes notifications for Quote Discount Approvals from Salesforce.com to an Android Wear device.
 
-To learn more about the architecture and code visit: TODO
+To learn more about the architecture and code visit: https://github.com/developerforce/WearablePack-AndroidWear
 
 To get this sample application running you will need:
 * An Android 4.3 or newer phone
