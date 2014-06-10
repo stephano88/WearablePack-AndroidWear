@@ -1,20 +1,20 @@
-Integrating Clouds & Humans with The Salesforce Wearable Pack for Android Wear
+Salesforce Wear Pack for Android Wear
 ------------------------------------------------------------------------------
 
-As smart watches and other human-integrated devices make their way into the mainstream, developers need to quickly ramp up to these new paradigms and interaction models.  Wearables form a constant connection between us and the information we interact with.  As an example, when I'm out on a bike ride if something comes up that needs my approval it would be great if I could just glance down at my watch a quickly review the item, then either approve or reject it.  With Salesforce and Android Wear I could do all of this without stopping and pulling my phone out of my pocket!
+As smart watches and other human-integrated devices make their way into the mainstream, developers need to quickly ramp up to these new paradigms and interaction models.  Wearables form a constant connection between us and the information we interact with.  As an example, when I'm out on a bike ride if something comes up that needs my approval it would be great if I could just glance down at my watch and quickly review the item, then either approve or reject it.  With Salesforce and Android Wear I could do all of this without stopping and pulling my phone out of my pocket!
 
 Check out a [demo video on YouTube](https://www.youtube.com/watch?v=vrjYEvn9sxE) of a sample app that does exactly that.
 
-As you can see, Android Wear apps are companions to phone apps as they receive notifications and allow the user to take quick actions based on targeted information.  This interaction model is based on information that can be consumed and acted on in a short glance.
+As you can see, Android Wear apps are companions to phone apps--they receive notifications and allow the user to take quick actions based on targeted information.  This interaction model is based on information that can be consumed and acted upon at a glance.
 
-For most business, Salesforce contains the information and events that employees, partners, and customers interact with all day long.  So it is easy to link together events on Salesforce with notifications on Android Wear devices.
+For most businesses, Salesforce contains the information and events that employees, partners, and customers interact with on a daily basis.  So it is easy to link together events on Salesforce with notifications on Android Wear devices.
 
 The basic architecture looks like this:
 
-1. A trigger in Salesforce handles an event that should trigger an Android Wear notification
-2. A message is created and sent to the Google Cloud Messaging (GCM) service using the new Mobile Push feature of Salesforce (Available in the Summer '14 release)
-3. GCM delivers the notification to an Android phone
-4. The Android phone delivers the notification to the wearable
+1. A trigger in Salesforce handles an event that should trigger an Android Wear notification.
+2. A message is created and sent to the Google Cloud Messaging (GCM) service using the new Mobile Push feature of Salesforce (Available in the Summer '14 release).
+3. GCM delivers the notification to an Android phone.
+4. The Android phone delivers the notification to the wearable.
 
 The *Quote Discount Approval* sample app contains the source for a Salesforce and Android Wear app that uses this architecture for a common use case.  Often sales quotes with a discount above a certain number need to be approved by a sales manager.  With this sample app those approval requests can be reviewed and approved or rejected from an Android Wear device, such as a watch.  Here is what the flow looks like in this sample app:
 
@@ -41,11 +41,11 @@ users.add(userId);
 msg.send('QuoteDiscountApproval', users);
 ```
 
-As you can see, the Apex API for creating a new mobile notification is very simple.  On the native Android side handling the notification is also very simple since the Salesforce Native Android library has built-in support for this.   The main app is defined in [src/main/java/com/force/quotediscountapproval/app/QuoteDiscountApprovalApp.java](https://github.com/developerforce/WearablePack-AndroidWear/blob/master/samples/QuoteDiscountApproval/src/main/java/com/force/quotediscountapproval/app/QuoteDiscountApprovalApp.java) and registers a notification receiver when the app is started:
+As you can see, the Apex API for creating a new mobile notification is very simple.  On the native Android side handling the notification is also very simple, since the Salesforce Native Android library has built-in support for this.   The main app is defined in [src/main/java/com/force/quotediscountapproval/app/QuoteDiscountApprovalApp.java](https://github.com/developerforce/WearablePack-AndroidWear/blob/master/samples/QuoteDiscountApproval/src/main/java/com/force/quotediscountapproval/app/QuoteDiscountApprovalApp.java), and registers a notification receiver when the app is started:
 
     SalesforceSDKManager.getInstance().setPushNotificationReceiver(new QuotePushNotification(this));
 
-The `QuotePushNotification` class is defined in [src/main/java/com/force/quotediscountapproval/app/QuotePushNotification.java](https://github.com/developerforce/WearablePack-AndroidWear/blob/master/samples/QuoteDiscountApproval/src/main/java/com/force/quotediscountapproval/app/QuotePushNotification.java) and handles the push notification by creating an Android notification which is displayed on the watch.  Here is part of the code which does that:
+The `QuotePushNotification` class is defined in [src/main/java/com/force/quotediscountapproval/app/QuotePushNotification.java](https://github.com/developerforce/WearablePack-AndroidWear/blob/master/samples/QuoteDiscountApproval/src/main/java/com/force/quotediscountapproval/app/QuotePushNotification.java), and handles the push notification by creating an Android notification which is displayed on the watch.  The following code excerpt does that:
 
 ```
 WearableNotifications.Builder wearableBuilder = new WearableNotifications.Builder(mainNotification);
