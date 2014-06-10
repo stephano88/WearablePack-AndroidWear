@@ -1,4 +1,4 @@
-Integrating Clouds & Humans with The Salesforce Wearable Pack for Android Wear
+Salesforce Wear Pack for Android Wear
 ------------------------------------------------------------------------------
 
 As smart watches and other human-integrated devices make their way into the mainstream, developers need to quickly ramp up to these new paradigms and interaction models.  Wearables form a constant connection between us and the information we interact with.  As an example, when I'm out on a bike ride if something comes up that needs my approval it would be great if I could just glance down at my watch and quickly review the item, then either approve or reject it.  With Salesforce and Android Wear I could do all of this without stopping and pulling my phone out of my pocket!
