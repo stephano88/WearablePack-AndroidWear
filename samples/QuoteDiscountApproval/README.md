@@ -15,7 +15,7 @@ Now lets get started setting up everything needed to run this sample application
 
 ## Part 1) Setup Google Cloud Messaging (GCM)
 
-1. Follow the instructions at: http://developer.android.com/google/gcm/gs.html
+1. Follow the instructions at: http://developer.android.com/google/gcm/gs.html      
 2. Take note of your *Project Number* and *API Key*
 
 

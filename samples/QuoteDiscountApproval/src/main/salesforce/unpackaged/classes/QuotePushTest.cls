@@ -2,12 +2,12 @@ public class QuotePushTest {
     public static void createTestQuote() {
         PriceBookEntry pbe = [select Id, Pricebook2Id, Product2Id from PriceBookEntry][0];
         
-    	Opportunity opp = new Opportunity(Name='Test Opp',
+        Opportunity opp = new Opportunity(Name='Test Opp',
                                           StageName='Proposal/Price Quote',
                                           CloseDate=System.Today());
-    	insert opp;
+        insert opp;
         
-		Quote q = new Quote(OpportunityId=opp.Id,
+        Quote q = new Quote(OpportunityId=opp.Id,
                             Name='Test Quote',
                             Pricebook2Id=pbe.Pricebook2Id);
         insert q;
