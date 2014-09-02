@@ -5,7 +5,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:0.10.1'
-        classpath 'com.jamesward:force-gradle-plugin:0.1'
+        classpath 'com.jamesward:force-gradle-plugin:0.2'
     }
 }
 apply plugin: 'android'
