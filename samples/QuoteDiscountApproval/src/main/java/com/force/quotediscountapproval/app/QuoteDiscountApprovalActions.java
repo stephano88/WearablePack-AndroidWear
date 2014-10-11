@@ -46,10 +46,9 @@ public class QuoteDiscountApprovalActions extends BroadcastReceiver {
     }
 
     protected void open(Context context, Intent intent, QuoteMessage quoteMessage) {
-        Intent i = new Intent(Intent.ACTION_VIEW);
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        i.setData(Uri.parse("chatter://" + quoteMessage.quoteId));
-        context.startActivity(i);
+        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, Uri.parse("https://login.salesforce.com/" + quoteMessage.quoteId));
+        launchBrowser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(launchBrowser);
     }
 
     protected void approve(Context context, Intent intent, QuoteMessage quoteMessage) {

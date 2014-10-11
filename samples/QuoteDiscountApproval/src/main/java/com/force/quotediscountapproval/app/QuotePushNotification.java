@@ -8,11 +8,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preview.support.v4.app.NotificationManagerCompat;
-import android.preview.support.wearable.notifications.RemoteInput;
-import android.preview.support.wearable.notifications.WearableNotifications;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationCompat.WearableExtender;
+import android.support.v4.app.NotificationManagerCompat;
 import java.util.Formatter;
+
+import android.support.v4.app.RemoteInput;
 import com.salesforce.androidsdk.push.PushNotificationInterface;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -87,6 +88,9 @@ public class QuotePushNotification implements PushNotificationInterface {
                 // Approve Card
                 mainNotification.addAction(R.drawable.approve, "Approve", approvePendingIntent);
 
+                NotificationCompat.Action approveAction =
+                        new NotificationCompat.Action.Builder(R.drawable.approve, "Approve", approvePendingIntent).build();
+
                 // Reject Card
                 String[] rejectChoices = {"Too high", "Lets wait"};
 
@@ -96,17 +100,22 @@ public class QuotePushNotification implements PushNotificationInterface {
                         .setLabel("Reject")
                         .build();
 
-                WearableNotifications.Action rejectAction = new WearableNotifications.Action.Builder(R.drawable.reject, "Reject", rejectPendingIntent)
-                        .addRemoteInput(remoteInput)
-                        .build();
+                NotificationCompat.Action rejectAction =
+                        new NotificationCompat.Action.Builder(R.drawable.reject, "Reject", rejectPendingIntent)
+                                .addRemoteInput(remoteInput)
+                                .build();
 
-                WearableNotifications.Builder wearableBuilder = new WearableNotifications.Builder(mainNotification);
-                wearableBuilder.addPage(detailNotification).addAction(rejectAction);
+                WearableExtender wearableExtender = new WearableExtender()
+                        .addAction(approveAction)
+                        .addAction(rejectAction)
+                        .addPage(detailNotification);
+
+                mainNotification.extend(wearableExtender);
 
                 // Open Card
                 mainNotification.setContentIntent(openPendingIntent);
 
-                NotificationManagerCompat.from(context).notify(1, wearableBuilder.build());
+                NotificationManagerCompat.from(context).notify(1, mainNotification.build());
             }
 
         }.execute(quoteMessage.ownerFullPhotoUrl);

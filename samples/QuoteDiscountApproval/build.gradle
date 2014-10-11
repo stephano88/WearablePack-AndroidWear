@@ -4,11 +4,11 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.10.1'
+        classpath 'com.android.tools.build:gradle:0.12.2'
         classpath 'com.jamesward:force-gradle-plugin:0.2'
     }
 }
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 apply plugin: 'force'
 
 repositories {
@@ -21,7 +21,7 @@ repositories {
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "19.0.3"
+    buildToolsVersion "20.0.0"
 
     defaultConfig {
         minSdkVersion 19
@@ -39,9 +39,8 @@ android {
 }
 
 dependencies {
-    compile "com.force:SalesforceSDK:2.1.1-3"
-    compile "com.android.support:support-v4:19.+"
-    compile files("libs/wearable-preview-support.jar")
+    compile "com.force:SalesforceSDK:2.3.0"
+    compile "com.android.support:support-v4:20.0.0"
 }
 
 force {

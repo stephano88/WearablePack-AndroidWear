@@ -14,9 +14,12 @@
     <uses-permission android:name="com.force.quotediscountapproval.app.permission.C2D_MESSAGE" />
 
     <application
+        tools:replace="android:icon"
         android:icon="@drawable/s1_icon"
         android:label="@string/app_name"
-        android:name=".QuoteDiscountApprovalApp">
+        android:name=".QuoteDiscountApprovalApp"
+        android:allowBackup="true"
+        android:manageSpaceActivity="com.salesforce.androidsdk.ui.ManageSpaceActivity">
         <activity
             android:name=".QuoteDiscountApprovalSetup"
             android:label="@string/app_name"
@@ -26,8 +29,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".QuoteDiscountApprovalActions" android:exported="true" />
-        <activity tools:merge="remove" android:name="org.apache.cordova.StandAlone" />
+        <receiver android:name=".QuoteDiscountApprovalActions"/>
+        <!--<activity tools:node="remove" android:name="org.apache.cordova.StandAlone" />-->
+        <!--<activity tools:node="remove" android:name="com.salesforce.androidsdk.ui.LoginActivity" />-->
     </application>
 
 </manifest>
