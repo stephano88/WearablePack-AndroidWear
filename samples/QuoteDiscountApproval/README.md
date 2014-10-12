@@ -27,8 +27,9 @@ Now lets get started setting up everything needed to run this sample application
     3. Tap *Build Number* multiple times until the developer tools is enabled
     4. Back in *Settings* select *Developer options*
     5. Select the *USB debugging* checkbox
-2. Follow the instructions for *Install the Android Wear System Image*, *Set Up the Android Wear Emulator*, and *Set Up the Android Wear Preview App* in the Wear preview instructions: http://developer.android.com/wear/preview/start.html
-3. Download and extract the Wear Developer Preview zip file
+1. [Install Android Studio](https://developer.android.com/sdk/installing/studio.html)
+1. Follow the *Set Up an Android Wear Emulator or Device* instructions from https://developer.android.com/training/wearables/apps/creating.html#SetupEmulator
+1. In Android Studio open this project: *File* > *Open* > Select the `build.gradle` file
 
 
 ## Part 3) Setup the Sample Project
