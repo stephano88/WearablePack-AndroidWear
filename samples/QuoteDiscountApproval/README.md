@@ -28,8 +28,8 @@ Now lets get started setting up everything needed to run this sample application
     4. Back in *Settings* select *Developer options*
     5. Select the *USB debugging* checkbox
 1. [Install Android Studio](https://developer.android.com/sdk/installing/studio.html)
+1. From the Android Studio splash screen select *Open Project* and select the `build.gradle` file
 1. Follow the *Set Up an Android Wear Emulator or Device* instructions from https://developer.android.com/training/wearables/apps/creating.html#SetupEmulator
-1. In Android Studio open this project: *File* > *Open* > Select the `build.gradle` file
 
 
 ## Part 3) Setup the Sample Project
