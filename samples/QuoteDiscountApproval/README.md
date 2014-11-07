@@ -5,68 +5,27 @@ This sample Android Wear application pushes notifications for Quote Discount App
 To learn more about the architecture and code visit: https://github.com/developerforce/WearablePack-AndroidWear
 
 To get this sample application running you will need:
-* An Android 4.3 or newer phone
-* A Salesforce organization with Mobile Push enabled
 
-    > Mobile Push will be generally available with the Summer '14 release.  If you are an existing Salesforce customer you can contact support to have Mobile Push enabled.
+* An Android 4.3 or newer phone
+* A copy of the project from the GitHub repo: https://github.com/developerforce/WearablePack-AndroidWear
 
 Now lets get started setting up everything needed to run this sample application.
-
 
 ## Part 1) Setup Google Cloud Messaging (GCM)
 
 1. Follow the instructions at: http://developer.android.com/google/gcm/gs.html      
-2. Take note of your *Project Number* and *API Key*
+1. Take note of your *Project Number* and *API Key*
 
+## Part 2) Setup the Sample Project
 
-## Part 2) Setup the Android Wear Development Environment
-
-1. Plug your Android device into your computer and enable debugging:
-    1. Launch *Settings*
-    2. Select *About Phone*
-    3. Tap *Build Number* multiple times until the developer tools is enabled
-    4. Back in *Settings* select *Developer options*
-    5. Select the *USB debugging* checkbox
-1. [Install Android Studio](https://developer.android.com/sdk/installing/studio.html)
-1. From the Android Studio splash screen select *Open Project* and select the `build.gradle` file
-1. Follow the *Set Up an Android Wear Emulator or Device* instructions from https://developer.android.com/training/wearables/apps/creating.html#SetupEmulator
-
-
-## Part 3) Setup the Sample Project
-
-1. Clone this git repo
-2. From the `AndroidWearPreview` directory copy the `wearable-preview-support.jar` file to the `QuoteDiscountApproval/libs` directory
-3. In the `QuoteDiscountApproval` directory create a new file named `gradle.properties` containing:
-
-        forceUsername=YOUR_SALESFORCE_USERNAME
-        forcePassword=YOUR_SALESFORCE_PASSWORD_AND_ACCESS_TOKEN
-        androidPushNotificationClientId="YOUR_GCM_PROJECT_NUMBER"
-        
-    Note: Make sure you put the GCM Project Number in double quotes, but not the others.
-
-4. In the `QuoteDiscountApproval` directory create a new file named `local.properties` containing:
-
-        sdk.dir=YOUR_FULL_PATH_TO_THE_ANDROID_SDK
-
-5. From the command line run the following in the `QuoteDiscountApproval` directory:
-
-        For Mac & Linux:
-        ./gradlew forceMetadataDeploy
-        
-        For Windows:
-        gradlew forceMetadataDeploy
-    
-    This deploys the Salesforce code from `src/main/salesforce` into your organization
+1. If you don't have an existing Salesforce instance then [create a new Developer instance of Salesforce](http://developer.salesforce.com/signup)
 
 6. Setup OAUTH
     1. In Salesforce, select *Setup*
     2. Select *Create*
     3. Select *Apps*
     4. In *Connected Apps* select the *QuoteDiscountApproval* app
-    5. Copy the *Consumer Key*
-    6. Add a new line to the `gradle.properties` file containing:
-    
-            remoteAccessConsumerKey=YOUR_OAUTH_CONSUMER_KEY
+    5. Take note of the *Consumer Key*
 
 7. Enable Mobile Push
     1. In the *QuoteDiscountApproval* screen select *Edit*
@@ -91,6 +50,32 @@ Now lets get started setting up everything needed to run this sample application
     13. In the *Approver Settings* section select the previously created user as the *Manager*
     14. Save your user
 
+## Part 3) Setup the Android Wear Development Environment
+
+1. Plug your Android device into your computer and enable debugging:
+    1. Launch *Settings*
+    2. Select *About Phone*
+    3. Tap *Build Number* multiple times until the developer tools is enabled
+    4. Back in *Settings* select *Developer options*
+    5. Select the *USB debugging* checkbox
+1. Create in new file named `gradle.properties` in your `WearablePack-AndroidWear/samples/QuoteDiscountApproval` directory containing:
+
+        forceUsername=YOUR_SALESFORCE_USERNAME
+        forcePassword=YOUR_SALESFORCE_PASSWORD
+        remoteAccessConsumerKey=YOUR_CONNECTED_APP'S_CONSUMER_KEY
+        androidPushNotificationClientId="YOUR_GCM_PROJECT_NUMBER"
+
+    Note: Make sure you put the GCM Project Number in double quotes, but not the others.
+
+1. [Install Android Studio](https://developer.android.com/sdk/installing/studio.html)
+1. From the Android Studio splash screen select *Open Project* and select the `build.gradle` file in your `WearablePack-AndroidWear/samples/QuoteDiscountApproval` file
+1. Follow the *Set Up an Android Wear Emulator or Device* instructions from https://developer.android.com/training/wearables/apps/creating.html#SetupEmulator
+1. In the Gradle menu run the `forceMetadataDeploy` Gradle task.  Or from the command line run:
+
+        gradlew forceMetadataDeploy
+
+    This deploys the Salesforce code from `src/main/salesforce` into your organization
+
 
 ## Part 4) Setup Salesforce1
 
@@ -100,10 +85,12 @@ Now lets get started setting up everything needed to run this sample application
 
 ## Part 5) Build and launch the Android app on your phone
 
+Either use the *Run* menu in Android Studio to run this app on your Android phone, or if you prefer to use the command line follow these instructions:
+
 1. Use the `adb` tool to list the connected devices like:
 
         ~/adt-bundle-mac-x86_64-20140321/sdk/platform-tools $ ./adb devices
-        List of devices attached 
+        List of devices attached
         emulator-5554   device
         070ca3ae00faad68        device
 
@@ -111,7 +98,7 @@ Now lets get started setting up everything needed to run this sample application
 
         On Mac & Linux:
         export ANDROID_SERIAL=070ca3ae00faad68
-        
+
         On Windows:
         set ANDROID_SERIAL=070ca3ae00faad68
 
@@ -119,11 +106,14 @@ Now lets get started setting up everything needed to run this sample application
 
         On Mac & Linux:
         ./gradlew installDebug
-        
+
         On Windows:
         gradlew installDebug
 
-4. On the phone launch the *Quote Discount Approval* app and login as the manager user
+4. Launch the Quote Discount Approval app on your phone
+
+Once the app is running login as the manager user
+
 
 ## Part 6) Test the notifications
 
